@@ -42,7 +42,7 @@ require('assets/web.php')
                 <a class="nav-link" target="_blank" href="https://github.com/ChaosSchwein1"><i class="fab fa-github"></i> <strong>GITHUB</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" target="_blank" href="https://chaosschwein.de/nextcloud"><i class="far fa-cloud"></i> <strong>CLOUD</strong></a>
+                <a class="nav-link" href="#about"><i class="far fa-user"></i> <strong>ABOUT ME</strong></a>
             </li>
         </ul>
     </div>
@@ -60,7 +60,11 @@ require('assets/web.php')
     </div>
 </div>
 <!-- Box -->
-
+<div class="about" id="about">
+<h2>About Me</h2>
+    <h4>Hallo mein Name ist Shaun und bin 18 Jahre alt.<br>Ich Programmiere seit ich 7 Jahren.<br>Ich habe bei einer Firma (MainTale-Studio) früher als Head-Developer geabeitet.
+        <br>Und Abeite zurzeit als Website Developer bei der Pypeware GmBH.</h4>
+</div>
 <!-- Footer -->
 <?php Web::top(); ?>
 <div class="footer">
