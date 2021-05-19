@@ -15,12 +15,7 @@ require('assets/web.php')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     <title>Home | ChaosSchwein</title>
-    <style>
 
-        a:hover {
-            color: #6441a5;
-        }
-    </style>
 
 </head>
 <body>
@@ -63,7 +58,8 @@ require('assets/web.php')
 <div class="about" id="about">
 <h2>About Me</h2>
     <h4>Hallo mein Name ist Shaun und bin 18 Jahre alt.<br>Ich Programmiere seit ich 7 Jahren.<br>Ich habe bei einer Firma (MainTale-Studio) früher als Head-Developer geabeitet.
-        <br>Und Abeite zurzeit als Website Developer bei der Pypeware GmBH.</h4>
+        <br>Und Abeite zurzeit als Website Developer bei der Pypeware GmBH.</h4><br><br>
+    <a target="_blank" href="https://www.get-in-it.de/profil/mmW9dgUZMaHJMsNoVERlURwfpVqwtT4F" class="button"><strong>GetinIT Profil</strong></a>
 </div>
 <!-- Footer -->
 <?php Web::top(); ?>

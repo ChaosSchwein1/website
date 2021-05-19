@@ -30,6 +30,9 @@ a:link, a:visited {
     text-decoration: none;
     display: inline-block;
 }
+.nav a:hover {
+    color: #6441a5;
+}
 
 .footer{
     bottom: 0%;
@@ -81,5 +84,38 @@ a:link, a:visited {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+.button{
+    padding: 5px 15px;
+    border: #394753 solid 3px;
+    background: #3c3c3c;
+    font-size: 20px;
+    animation: animationsmall 1s forwards;
 
+}
+.button:hover{
+    animation: animationbig 1s forwards;
+}
+@keyframes animationbig {
+    0%{
+        font-size: 20px;
+        color: white;
+    }
+    100%{
+        font-size: 25px;
+        color: #00ff04;
+        border: #43535f solid 5px;
+    }
+}
+@keyframes animationsmall {
+    0%{
+        font-size: 25px;
+        color: #00ff04;
+        border: #43535f solid 5px;
+
+    }
+    100%{
+        font-size: 20px;
+        color: white;
+    }
 }
