@@ -61,6 +61,92 @@ require('assets/web.php')
         <br>Und Abeite zurzeit als Website Developer bei der Pypeware GmBH.</h4><br><br>
     <a target="_blank" href="https://www.get-in-it.de/profil/mmW9dgUZMaHJMsNoVERlURwfpVqwtT4F" class="button"><strong>GetinIT Profil</strong></a>
 </div>
+<br><br>
+<div class="container" id="kontakt">
+    <h2 class="mb50 mt50"><span>Nehmen Sie Kontakt auf</span></h2>
+    <?php
+
+    $empfaenger = 'shaun.luedeke5520@gmail.com'; // deine-adresse@gmx.de kann es auch sein!
+
+    $submitted=false;
+
+    $name="";
+    $email="";
+    $telefon="";
+    $betreff="";
+    $text="";
+
+    if(isset($_POST['abschicken'])){
+        empty($_POST['name']) ? $err[] = '<li>- den Namen angeben</li>' : $name=$_POST['name'];
+        empty($_POST['email']) ? $err[] = '<li>- die Email-Adresse angeben</li>' : $email=$_POST['email'];
+        empty($_POST['betreff']) ? $err[] = '<li>- welchen Wunsch haben Sie? Bitte den Text eingeben</li>' : $betreff=$_POST['betreff'];
+        empty($_POST['text']) ? $err[] = '<li>- welchen Wunsch haben Sie? Bitte den Text eingeben</li>' :$text=$_POST['text'];
+        empty($_POST['telefon']) ? "" : $telefon = $_POST['telefon'];
+        ('4' != $_POST['contact_antispam'] && $_POST['contact_antispam'] != 'vier') ? $err[] = '<li>- falscher Sicherheitscode</li>' : '';
+
+        if(!empty($err)) {
+            echo '<div class="alert alert-danger">Bitte korrigieren Sie folgende Fehler:<br>
+            <ul class="list-unstyled content-list text-danger">';
+            foreach($err as $fehler){
+                echo $fehler;
+            }
+            echo '</ul></div>';
+        } else {
+            $absender = $_POST['email'];
+            $mail_header = "From: Kontakt ChaosSchwein <".$absender.">\r\n";
+            $mail_header .= "Reply-To: Kontakt ChaosSchwein <".$absender.">\r\n";
+            $mail_header .= "X-Sender-IP: ".$_SERVER['REMOTE_ADDR']."\r\n";
+            $mail_header .= "MIME-Version: 1.0\r\n";
+            $mail_header .= "Content-Type: text/html; charset=UTF-8;\r\n";
+
+            $mailnachricht = '<html><body>';
+            foreach ($_POST as $feld => $wert) {
+                if($feld!="abschicken" && $feld!="contact_antispam") {
+                    $mailnachricht.=ucfirst($feld).": <br>".preg_replace("/(content-type:|bcc:|cc:|to:|from:)/im", "",$wert)."<br><br>";
+                }
+            }
+            $email = preg_replace("/[^a-z0-9 !?:;,.\/_\-=+@#$&\*\(\)]/im", "", $_POST['email']);
+            $email = preg_replace("/(content-type:|bcc:|cc:|to:|from:)/im", "", $email);
+            $mailnachricht.="\nDatum/Zeit: ".date("d.m.Y H:i:s");
+            $mailnachricht.= '</body></html>';
+            mail($empfaenger, "Kontaktformular domain.de", $mailnachricht,$mail_header);
+            echo '<div class="alert alert-success">Vielen Dank für Ihre eMail!<br><br>Wir werden schnellstmöglich diese bearbeiten.</div>';
+            $submitted = true;
+        }
+    }
+
+    if($submitted != true){ ?>
+        <form role="form" class="well" method="post">
+            <br><div class="form-group">
+                <label>Name / Vorname*</label>
+                <input class="form-control" type="text" name="name" value="<?php echo $name; ?>">
+            </div><br>
+            <div class="form-group">
+                <label>Email*</label>
+                <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
+            </div><br>
+            <div class="form-group">
+                <label>Telefon</label>
+                <input class="form-control" type="text" name="telefon" value="<?php echo $telefon; ?>">
+            </div><br>
+            <div class="form-group">
+                <label>Betreff*</label>
+                <input class="form-control" type="text" name="betreff" value="<?php echo $betreff; ?>">
+            </div><br>
+            <div class="form-group">
+                <label>Ihre Mitteilung*</label>
+                <textarea class="form-control" rows="5" name="text"><?php echo $text ?></textarea>
+            </div><br>
+            <div class="form-group">
+                <label>Spamschutz*: wie viele Beine hat ein Stuhl?</label>
+                <input class="form-control" type="text" value="" name="contact_antispam">
+            </div>
+            <br>
+            <button type="submit" name="abschicken" class="btn btn-success btn-block"><i class="fa fa-envelope"></i> Nachricht absenden</button>
+        </form>
+        <br><br>
+    <?php	} ?>
+</div>
 <!-- Footer -->
 <?php Web::top(); ?>
 <div class="footer">
