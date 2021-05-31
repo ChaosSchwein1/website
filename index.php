@@ -79,7 +79,7 @@ require('assets/web.php')
     if(isset($_POST['abschicken'])){
         empty($_POST['name']) ? $err[] = '<li>- den Namen angeben</li>' : $name=$_POST['name'];
         empty($_POST['email']) ? $err[] = '<li>- die Email-Adresse angeben</li>' : $email=$_POST['email'];
-        empty($_POST['betreff']) ? $err[] = '<li>- welchen Wunsch haben Sie? Bitte den Text eingeben</li>' : $betreff=$_POST['betreff'];
+        empty($_POST['betreff']) ? $err[] = '<li>- welche Betreff haben Sie? Bitte den Text eingeben</li>' : $betreff=$_POST['betreff'];
         empty($_POST['text']) ? $err[] = '<li>- welchen Wunsch haben Sie? Bitte den Text eingeben</li>' :$text=$_POST['text'];
         empty($_POST['telefon']) ? "" : $telefon = $_POST['telefon'];
         ('4' != $_POST['contact_antispam'] && $_POST['contact_antispam'] != 'vier') ? $err[] = '<li>- falscher Sicherheitscode</li>' : '';
