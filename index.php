@@ -1,5 +1,7 @@
 <?php
-require('assets/web.php')
+require('assets/web.php');
+include('assets/logger.php');
+logger::getIP();
 ?>
 <!doctype html>
 <html lang="en">
@@ -93,7 +95,7 @@ require('assets/web.php')
             echo '</ul></div>';
         } else {
             $absender = $_POST['email'];
-            $mail_header = "From: Kontakt ChaosSchwein <".$absender.">\r\n";
+            $mail_header = "From: Kontakt ChaosSchwein <kontakt@chaosschwein.de>\r\n";
             $mail_header .= "Reply-To: Kontakt ChaosSchwein <".$absender.">\r\n";
             $mail_header .= "X-Sender-IP: ".$_SERVER['REMOTE_ADDR']."\r\n";
             $mail_header .= "MIME-Version: 1.0\r\n";
